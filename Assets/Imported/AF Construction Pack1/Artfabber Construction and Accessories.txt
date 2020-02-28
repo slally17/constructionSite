@@ -1,0 +1,178 @@
+
+Artfabber Construction Pack1
+
+INITIAL RELEASE V1
+
+NOTE:
+Standard Assets have not been included to avoid compatibility issues.
+Please add first person or third person controller if you would like to walk the scene.
+
+
+------------------------------------
+
+Vehicles - Tri Polycounts
+
+Backloader - 3570
+Bulldozer - 3702
+Cement Mixer - 1128
+Compressor - 1172
+Concrete Mixer - 4418
+Dumptruck - 3748
+Excavator - 3070
+Forklift - 2394
+Mobile Crane - 2507
+Road Breaker - 1824
+Site Dumper - 2528
+Tower Crane - 3768
+
+------------------------------------
+
+Accessories
+
+Skips/Trash
+
+Skip1 - 660
+Skip2 - 584
+Skip3 - 532
+
+
+Barrels
+
+Barrel1 - 356
+Barrel2 - 326
+Barrel3 - 296
+Barrel4 - 296
+Barrel5 - 302
+
+
+Bricks
+
+Bricks_Stacked - 2072
+Loose Bricks - range from 12 to 54
+
+
+Concrete Blocks
+
+Concrete Block1 - 60
+Concrete Block2 - 56
+Concrete Block3 - 52
+Concrete Block4 - 64
+Concrete Block5 - 68
+Concrete Block6 - 52
+Concrete Block7 - 56
+
+
+Concrete Piles
+
+Concrete_Pile1 - 50
+Concrete_Pile2 - 88
+Concrete_Pile3 - 94
+Concrete_Pile4 - 68
+Concrete_Pile5 - 50
+Concrete_Pile6 - 66
+Concrete_Pile7 - 100
+
+
+Concrete Tubes
+
+Concrete_Tubes1 - 160
+Concrete_Tubes2 - 180
+Concrete_Tubes3 - 540
+Concrete_Tubes4 - 1620
+
+
+Concrete and Wire
+
+Concrete_Wire1 - 16
+Concrete_Wire1 - 16
+Concrete_Wire1 - 20
+Concrete_Wire1 - 60
+Concrete_Wire1 - 20
+Concrete_Wire1 - 20
+Concrete_Wire1 - 100
+Concrete_Wire1 - 96
+Concrete_Wire1 - 152
+Concrete_Wire1 - 210
+Concrete_Wire1 - 214
+Concrete_Wire1 - 288
+Concrete_Wire1 - 166
+Concrete_Wire1 - 156
+Concrete_Wire1 - 228
+Concrete_Wire1 - 248
+Concrete_Wire1 - 300
+Concrete_Wire1 - 56
+Concrete_Wire1 - 44
+Concrete_Wire1 - 44
+Concrete_Wire1 - 20
+
+
+Girders
+
+Girder1 - 60
+Girder1 - 156
+Girder1 - 156
+Girder1 - 220
+Girder1 - 156
+Girder1 - 84
+
+
+Wood Dark
+
+Wood_Dark1 - 16
+Wood_Dark2 - 12
+Wood_Dark3 - 12
+Wood_Dark4 - 12
+Wood_Dark5 - 60
+Wood_Dark6 - 64
+Wood_Dark7 - 158
+Wood_Dark8 - 76
+Wood_Dark9 - 60
+Wood_Dark10 - 36
+Wood_Dark11 - 60
+Wood_Dark12 - 12
+Wood_Dark13 - 12
+Wood_Dark14 - 20
+
+
+Wooden Pallets
+
+Wood Pallet1 - 180
+Wood Pallet2 - 100
+Wood Pallet3 - 172
+Wood Pallet4 - 100
+
+
+Barriers
+
+Barrier1 - 448
+Barrier2 - 360
+
+
+Cones
+
+Cone1 - 118
+Cone2 - 64
+Cone3 - 164
+
+
+Fences
+
+Fence1 - 288
+Fence1 - 418
+Fence1 - 780
+Fence1 - 150
+Fence1 - 312
+Fence1 - 630
+
+------------------------------------
+
+
+
+
+
+
+
+
+
+
+
