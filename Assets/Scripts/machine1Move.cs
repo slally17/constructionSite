@@ -9,12 +9,14 @@ public class machine1Move : MonoBehaviour
     [SerializeField] private Transform[] moveSpots;
 
     private bool enable;
+    private bool tagged;
     private int arrayPosition;
     
     // Start is called before the first frame update
     void Start()
     {
         enable = false;
+        tagged = false;
         arrayPosition = 0;
     }
 
@@ -41,6 +43,11 @@ public class machine1Move : MonoBehaviour
 
     public void start()
     {
-        enable = true;
+        enable = !enable;
+    }
+
+    public void switchTag()
+    {
+        tagged = !tagged;
     }
 }

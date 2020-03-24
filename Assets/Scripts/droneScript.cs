@@ -17,8 +17,8 @@ public class droneScript : MonoBehaviour
     private float zMin = -1.178f;
     private float xMax = 4.111f;
     private float xMin = -2.563f;
-    private float yMax = 1.454f;
-    private float yMin = -0.2825f;
+    private float yMax = 1.25f;
+    private float yMin = -0.25f;
 
     private float verticalMultiplier = 0;
     private float horizontalMultiplier = 0;

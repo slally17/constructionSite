@@ -10,12 +10,14 @@ public class machine2Move : MonoBehaviour
     [SerializeField] private Animator machineAnimator;
 
     private bool enable;
+    private bool tagged;
     private int arrayPosition;
 
     // Start is called before the first frame update
     void Start()
     {
         enable = false;
+        tagged = false;
         arrayPosition = 0;
     }
 
@@ -42,8 +44,21 @@ public class machine2Move : MonoBehaviour
 
     public void start()
     {
-        machineAnimator.SetBool("moving", true);
-        enable = true;
+        if (enable)
+        {
+            machineAnimator.SetBool("moving", false);
+            enable = false;
+        }
+        else
+        {
+            machineAnimator.SetBool("moving", true);
+            enable = true;
+        }
+    }
+
+    public void switchTag()
+    {
+        tagged = !tagged;
     }
 }
 

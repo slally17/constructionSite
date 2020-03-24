@@ -109,11 +109,13 @@ public class menuScript : MonoBehaviour
         resourceMenu.SetActive(true);
         resourceButtons.SetActive(true);
     }
-    private void enableTag(GameObject Tag)
+    private void switchTag(GameObject Tag)
     {
         //disableTags();
-
-        Tag.transform.GetChild(0).gameObject.SetActive(true);
+        if(Tag.transform.GetChild(0).gameObject.activeSelf)
+            Tag.transform.GetChild(0).gameObject.SetActive(false);
+        else
+            Tag.transform.GetChild(0).gameObject.SetActive(true);
     }
     private void disableTags()
     {
@@ -249,16 +251,15 @@ public class menuScript : MonoBehaviour
         if(move)
         {
             machine1.GetComponent<machine1Move>().start();
-            moveDone();
         }
 
         if(sensors)
         {
             if(gps)
             {
-                enableTag(machine1);
+                switchTag(machine1);
+                machine1.GetComponent<machine1Move>().switchTag();
             }
-            sensorsDone();
         }
     }
 
@@ -268,16 +269,15 @@ public class menuScript : MonoBehaviour
         if(move)
         {
             machine2.GetComponent<machine2Move>().start();
-            moveDone();
         }
 
         if(sensors)
         {
             if(gps)
             {
-                enableTag(machine2);
+                switchTag(machine2);
+                machine2.GetComponent<machine2Move>().switchTag();
             }
-            sensorsDone();
         }
     }
 
@@ -287,27 +287,25 @@ public class menuScript : MonoBehaviour
         if(move)
         {
             worker.GetComponent<workerMove>().start();
-            moveDone();
         }
 
         if(sensors)
         {
             if(gps)
             {
-                enableTag(worker);
+                switchTag(worker);
+                worker.GetComponent<workerMove>().switchTag();
             }
-            sensorsDone();
         }
     }
 
     //Functions to select move
     public void moveSelected()
     {
-        move = true;
-        gps = false;
         sensorsDone();
         resourceMenu.SetActive(true);
         resourceButtons.SetActive(true);
+        move = true;
     }
     private void moveDone()
     {
@@ -333,11 +331,12 @@ public class menuScript : MonoBehaviour
         resourceMenu.SetActive(false);
         resourceButtons.SetActive(false);
     }
-    private void sensorsDone()
+    public void sensorsDone()
     {
         scanner.GetComponent<Animator>().SetBool("spin", false);
         sensors = false;
         gps = false;
+        moveDone();
         resourceMenu.SetActive(false);
         resourceButtons.SetActive(false);
         sensorMenu.SetActive(false);
