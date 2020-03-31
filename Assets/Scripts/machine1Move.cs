@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class machine1Move : MonoBehaviour
 {
+    //USED FOR BULLDOZER
     [SerializeField] private float speed;
     [SerializeField] private float precision;
     [SerializeField] private Transform[] moveSpots;
 
     private bool enable;
-    private bool tagged;
+    [HideInInspector] public bool tagged;
     private int arrayPosition;
     
     // Start is called before the first frame update
@@ -23,7 +24,7 @@ public class machine1Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(enable)
+        if(enable && tagged)
         {
             //transform.position = Vector3.MoveTowards(transform.position, moveSpots[arrayPosition].position, speed*Time.deltaTime);
             transform.position += transform.forward * Time.deltaTime * speed;
@@ -44,10 +45,5 @@ public class machine1Move : MonoBehaviour
     public void start()
     {
         enable = !enable;
-    }
-
-    public void switchTag()
-    {
-        tagged = !tagged;
     }
 }

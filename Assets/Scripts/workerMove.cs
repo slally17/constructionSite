@@ -10,7 +10,7 @@ public class workerMove : MonoBehaviour
     [SerializeField] private Animator workerAnimator;
 
     private bool enable;
-    private bool tagged;
+    [HideInInspector] public bool tagged;
     private int arrayPosition;
 
     // Start is called before the first frame update
@@ -24,7 +24,7 @@ public class workerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enable)
+        if (enable && tagged)
         {
             //transform.position = Vector3.MoveTowards(transform.position, moveSpots[arrayPosition].position, speed * Time.deltaTime);
             transform.position += transform.forward * Time.deltaTime * speed;
@@ -54,10 +54,5 @@ public class workerMove : MonoBehaviour
             workerAnimator.SetBool("moving", true);
             enable = true;
         }
-    }
-
-    public void switchTag()
-    {
-        tagged = !tagged;
     }
 }

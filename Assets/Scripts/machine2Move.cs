@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class machine2Move : MonoBehaviour
 {
+    //USED FOR DUMP TRUCK
     [SerializeField] private float speed;
     [SerializeField] private float precision;
     [SerializeField] private Transform[] moveSpots;
     [SerializeField] private Animator machineAnimator;
 
     private bool enable;
-    private bool tagged;
+    [HideInInspector] public bool tagged;
     private int arrayPosition;
 
     // Start is called before the first frame update
@@ -24,7 +25,7 @@ public class machine2Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enable)
+        if (enable && tagged)
         {
             //transform.position = Vector3.MoveTowards(transform.position, moveSpots[arrayPosition].position, speed * Time.deltaTime);
             transform.position += transform.forward * Time.deltaTime * speed;
@@ -54,11 +55,6 @@ public class machine2Move : MonoBehaviour
             machineAnimator.SetBool("moving", true);
             enable = true;
         }
-    }
-
-    public void switchTag()
-    {
-        tagged = !tagged;
     }
 }
 
