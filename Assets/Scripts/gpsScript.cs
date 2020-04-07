@@ -15,9 +15,14 @@ public class gpsScript : MonoBehaviour
     [SerializeField] private GameObject report;
     [SerializeField] private GameObject resourceMenu;
     [SerializeField] private GameObject moveText;
+    [SerializeField] private GameObject timeText;
+    [SerializeField] private GameObject bulldozerText;
+    [SerializeField] private GameObject dumpTruckText;
+    [SerializeField] private GameObject craneText;
 
     GameObject[] tags;
     bool moving = false;
+    float timer = 0;
 
     private void Start()
     {
@@ -27,6 +32,12 @@ public class gpsScript : MonoBehaviour
         report.SetActive(false);
         tags = GameObject.FindGameObjectsWithTag("selectionTag");
         resourceMenu.SetActive(false);        
+    }
+
+    private void Update()
+    {
+        if (moving)
+            timer += Time.deltaTime;
     }
 
     public void indoorSelected()
@@ -105,7 +116,14 @@ public class gpsScript : MonoBehaviour
         page3.SetActive(false);
         report.SetActive(false);
         removeTags();
-        moving = false;
+        if(moving)
+        {
+            bulldozer.GetComponent<machine1Move>().start();
+            dumpTruck.GetComponent<machine2Move>().start();
+            crane.GetComponent<craneMove>().start();
+            moving = false;
+            moveText.GetComponent<TextMeshProUGUI>().text = "Move";
+        }
         resourceMenu.SetActive(false);
     }
 
@@ -114,10 +132,12 @@ public class gpsScript : MonoBehaviour
     {
         bulldozer.GetComponent<machine1Move>().start();
         dumpTruck.GetComponent<machine2Move>().start();
+        crane.GetComponent<craneMove>().start();
         moving = !moving;
 
         if(moving)
         {
+            timer = 0;
             moveText.GetComponent<TextMeshProUGUI>().text = "Stop";
             report.SetActive(false);
         }
@@ -125,6 +145,25 @@ public class gpsScript : MonoBehaviour
         {
             moveText.GetComponent<TextMeshProUGUI>().text = "Move";
             report.SetActive(true);
+            reportFunction();
+        }
+    }
+
+    private void reportFunction()
+    {
+        timeText.GetComponent<TextMeshProUGUI>().text = "Time: " + timer.ToString("F1") + " seconds";
+
+        if (bulldozer.GetComponent<machine1Move>().tagged)
+        {
+            bulldozerText.GetComponent<TextMeshProUGUI>().text = "Bulldozer Cycles: " + bulldozer.GetComponent<machine1Move>().lapCount;
+        }
+        if (dumpTruck.GetComponent<machine2Move>().tagged)
+        {
+            dumpTruckText.GetComponent<TextMeshProUGUI>().text = "Dump Truck Cycles: " + dumpTruck.GetComponent<machine2Move>().lapCount;
+        }       
+        if (crane.GetComponent<craneMove>().tagged)
+        {
+            craneText.GetComponent<TextMeshProUGUI>().text = "Crane Cycles: " + crane.GetComponent<craneMove>().lapCount;
         }
     }
 

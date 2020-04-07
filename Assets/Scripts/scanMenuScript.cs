@@ -14,7 +14,6 @@ public class scanMenuScript : MonoBehaviour
     [SerializeField] private GameObject backButton;
     [SerializeField] private GameObject[] targets;
     [SerializeField] private GameObject tripodScripts;
-    [SerializeField] private float[] tripodMove = new float[3];
     [SerializeField] private float[] scannerMove = new float[3];
 
 
@@ -49,7 +48,7 @@ public class scanMenuScript : MonoBehaviour
     public void positionTripod()
     {
         Vector3 newPosition = tripod.transform.position;
-        mainCamera.transform.position = newPosition + new Vector3(tripodMove[0], tripodMove[1], tripodMove[2]);
+        mainCamera.transform.position = newPosition + new Vector3(scannerMove[0], scannerMove[1], scannerMove[2]);
         backButton.SetActive(true);
         mainMenu.GetComponent<Canvas>().enabled = false;
     }

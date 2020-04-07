@@ -6,8 +6,10 @@ using UnityStandardAssets.ImageEffects;
 
 public class scannerCamera : MonoBehaviour
 {
+    //[SerializeField] private RenderTexture cubemapEye;
+    //[SerializeField] private RenderTexture equirect;
+
     [SerializeField] private Canvas display;
-    [SerializeField] private GameObject scannerField;
     Camera snapCam;
 
     int startingResWidth = 6;
@@ -84,6 +86,12 @@ public class scannerCamera : MonoBehaviour
 
         if(snapCam.gameObject.activeInHierarchy)
         {
+            //Test
+            //Camera cam = GetComponent<Camera>();
+            //cam.RenderToCubemap(cubemapEye, 63, Camera.MonoOrStereoscopicEye.Mono);
+            //cubemapEye.ConvertToEquirect(equirect, Camera.MonoOrStereoscopicEye.Mono);
+
+
             //Input
             snapshot = new Texture2D(resWidth, resHeight, TextureFormat.RGB24, false);
             snapCam.Render();

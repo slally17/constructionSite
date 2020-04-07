@@ -10,16 +10,15 @@ public class machine2Move : MonoBehaviour
     [SerializeField] private Transform[] moveSpots;
     [SerializeField] private Animator machineAnimator;
 
-    private bool enable;
-    [HideInInspector] public bool tagged;
-    private int arrayPosition;
-
+    private bool enable = false;
+    [HideInInspector] public bool tagged = false;
+    [HideInInspector] public int lapCount;
+    private int arrayPosition = 0;
+    
     // Start is called before the first frame update
     void Start()
     {
-        enable = false;
-        tagged = false;
-        arrayPosition = 0;
+
     }
 
     // Update is called once per frame
@@ -38,7 +37,10 @@ public class machine2Move : MonoBehaviour
                 if (arrayPosition < moveSpots.Length - 1)
                     arrayPosition++;
                 else
+                {
                     arrayPosition = 0;
+                    lapCount++;
+                }
             }
         }
     }
@@ -52,6 +54,7 @@ public class machine2Move : MonoBehaviour
         }
         else
         {
+            lapCount = 0;
             machineAnimator.SetBool("moving", true);
             enable = true;
         }

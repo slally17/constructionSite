@@ -30,10 +30,12 @@ public class menuScript : MonoBehaviour
 
     bool move = false;
     bool sensors = false;
+    Vector3 droneResetPosition;
 
     void Start()
     {      
         menuBackButton2.SetActive(false);
+        droneResetPosition = drone.transform.position;
     }
 
     //Functions to reset and quit scene.
@@ -94,7 +96,7 @@ public class menuScript : MonoBehaviour
         drone.GetComponent<droneScript>().taskSelected = false;
         drone.GetComponent<droneScript>().power = false;
         drone.GetComponent<droneScript>().motor = false;
-        drone.transform.position = new Vector3(2.15f, -0.85f, 0.1717794f);
+        drone.transform.position = droneResetPosition;
         drone.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         flightCanvas.enabled = false;
         rotateSlider.value = 0;

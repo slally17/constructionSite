@@ -9,6 +9,7 @@ public class scanScript : MonoBehaviour
     [SerializeField] private GameObject scannerField;
     [SerializeField] private GameObject scanner;
     [SerializeField] private scannerCamera scannerCamera;
+    [SerializeField] private testScript testScript;
     [SerializeField] private GameObject[] targets;
 
     [SerializeField] private GameObject resolutionCanvas;
@@ -130,6 +131,7 @@ public class scanScript : MonoBehaviour
             display.enabled = false;
             scanner.GetComponent<Animator>().SetBool("spin", true);
             scannerCamera.takeScan(resolution, quality, color);
+            testScript.test();
             scanning = true;
             scanTime = startingScanTime;
         }

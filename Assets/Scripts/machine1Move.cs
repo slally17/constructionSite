@@ -9,16 +9,16 @@ public class machine1Move : MonoBehaviour
     [SerializeField] private float precision;
     [SerializeField] private Transform[] moveSpots;
 
-    private bool enable;
-    [HideInInspector] public bool tagged;
-    private int arrayPosition;
+    private bool enable = false;
+    [HideInInspector] public bool tagged = false;
+    [HideInInspector] public int lapCount;
+    private int arrayPosition = 0;
     
+
     // Start is called before the first frame update
     void Start()
     {
-        enable = false;
-        tagged = false;
-        arrayPosition = 0;
+
     }
 
     // Update is called once per frame
@@ -34,16 +34,27 @@ public class machine1Move : MonoBehaviour
 
             if (Vector3.Distance(transform.position, moveSpots[arrayPosition].position) < precision)
             {
-                if(arrayPosition < moveSpots.Length-1)
+                if (arrayPosition < moveSpots.Length - 1)
                     arrayPosition++;
                 else
+                {
                     arrayPosition = 0;
+                    lapCount++;
+                }
             }
         }
     }
 
     public void start()
     {
-        enable = !enable;
+        if (enable)
+        {
+            enable = false;
+        }
+        else
+        {
+            lapCount = 0;
+            enable = true;
+        }
     }
 }
