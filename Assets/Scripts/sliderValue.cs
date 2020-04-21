@@ -15,6 +15,9 @@ public class sliderValue : MonoBehaviour
 
     public void changeTextValue(Slider newValue)
     {
-        currentValue = newValue.value.ToString();
+        if (newValue.value == 181)
+            currentValue = "360";
+        else
+            currentValue = newValue.value.ToString();
     }
 }

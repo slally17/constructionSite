@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.IO;
 
 public class gpsScript : MonoBehaviour
 {
@@ -101,6 +102,11 @@ public class gpsScript : MonoBehaviour
             dumpTruck.GetComponent<machine2Move>().tagged = false;
             switchTag(dumpTruck);
         }
+        if(crane.GetComponent<craneMove>().tagged)
+        {
+            crane.GetComponent<craneMove>().tagged = false;
+            switchTag(crane);
+        }
     }
 
     public void done()
@@ -151,20 +157,51 @@ public class gpsScript : MonoBehaviour
 
     private void reportFunction()
     {
+        string filePath = Application.persistentDataPath + "/gpsReports";
+
+        if (!Directory.Exists(filePath))
+        {
+            Directory.CreateDirectory(filePath);
+        }
+
+        string fileName = string.Format("{0}/gpsReport_{1}.txt",
+            filePath,
+            System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
+        File.WriteAllText(fileName, "GPS Report\n\n");
+
+
+        string fileContent = "Time: " + timer.ToString("F1") + " seconds\n";
         timeText.GetComponent<TextMeshProUGUI>().text = "Time: " + timer.ToString("F1") + " seconds";
 
         if (bulldozer.GetComponent<machine1Move>().tagged)
         {
+            fileContent += "Bulldozer Cycles: " + bulldozer.GetComponent<machine1Move>().lapCount + "\n";
             bulldozerText.GetComponent<TextMeshProUGUI>().text = "Bulldozer Cycles: " + bulldozer.GetComponent<machine1Move>().lapCount;
+        }
+        else
+        {
+            bulldozerText.GetComponent<TextMeshProUGUI>().text = " ";
         }
         if (dumpTruck.GetComponent<machine2Move>().tagged)
         {
+            fileContent += "Dump Truck Cycles: " + dumpTruck.GetComponent<machine2Move>().lapCount + "\n";
             dumpTruckText.GetComponent<TextMeshProUGUI>().text = "Dump Truck Cycles: " + dumpTruck.GetComponent<machine2Move>().lapCount;
-        }       
+        }
+        else
+        {
+            dumpTruckText.GetComponent<TextMeshProUGUI>().text = " ";
+        }
         if (crane.GetComponent<craneMove>().tagged)
         {
+            fileContent += "Crane Cycles: " + crane.GetComponent<craneMove>().lapCount + "\n";
             craneText.GetComponent<TextMeshProUGUI>().text = "Crane Cycles: " + crane.GetComponent<craneMove>().lapCount;
         }
+        else
+        {
+            craneText.GetComponent<TextMeshProUGUI>().text = " ";
+        }
+
+        File.AppendAllText(fileName, fileContent);
     }
 
 

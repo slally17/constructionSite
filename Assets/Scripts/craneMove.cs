@@ -40,12 +40,12 @@ public class craneMove : MonoBehaviour
     {
         if (enable)
         {
-            lapCount = Mathf.RoundToInt((timer - 1.5f * Mathf.PI) % (2 * Mathf.PI));
+            //lapCount = Mathf.RoundToInt((timer - 1.5f * Mathf.PI) % (2 * Mathf.PI));
             enable = false;
         }
         else
         {
-            timer = 1.5f * Mathf.PI;
+            //timer = 1.5f * Mathf.PI;
             lapCount = 0;
             enable = true;
         }

@@ -35,6 +35,7 @@ public class scanScript : MonoBehaviour
     [HideInInspector]  public int profile = 0;
     [HideInInspector] public bool coverage = false;
     bool scanning = false;
+    bool camera360 = false;
     float scanTime = 0;
     float startingScanTime = 0;
     Vector3 scannerFieldScale, scannerFieldRotation;
@@ -73,11 +74,21 @@ public class scanScript : MonoBehaviour
         else
             scanButton.GetComponent<Button>().colors = colorVar;
 
-        if(scanTime < 0)
+        if(scanning && scanTime < 0)
         {
             scanning = false;
             scanner.GetComponent<Animator>().SetBool("spin", false);
             display.enabled = true;
+            if(camera360)
+            {
+                display.transform.GetChild(0).gameObject.SetActive(false);
+                display.transform.GetChild(1).gameObject.SetActive(true);
+            }
+            else
+            {
+                display.transform.GetChild(0).gameObject.SetActive(true);
+                display.transform.GetChild(1).gameObject.SetActive(false);
+            }
         }
         if(scanning)
         {
@@ -259,8 +270,7 @@ public class scanScript : MonoBehaviour
     //Function for coverage
     public void coverageBack()
     {
-        scannerField.GetComponent<Renderer>().enabled = false;
-        coverage = true;
+        scannerField.GetComponent<Renderer>().enabled = false;        
         coverageCanvas.GetComponent<Canvas>().enabled = false;
     }
 
@@ -268,18 +278,39 @@ public class scanScript : MonoBehaviour
     public void cameraWidthSlider(Slider newWidth)
     {
         cameraWidth = (int)newWidth.value;
+        coverage = true;
+        if (cameraWidth == 0 || cameraHeight == 0)
+        {
+            coverage = false;
+        }
+
+        if (cameraWidth == 181)
+        {
+            camera360 = true;
+        }
+        else
+        {
+            camera360 = false;
+        }
+
     }
     public void cameraMinHeightSlider(Slider newHeightMin)
     {
+        coverage = true;
         cameraHeightMin = (int)newHeightMin.value;
         cameraHeight = cameraHeightMax - cameraHeightMin;
+        if (cameraHeight == 0 || cameraWidth == 0)
+            coverage = false;
         scannerField.transform.localScale = scannerFieldScale + new Vector3(cameraWidth - 10, 0, (cameraHeight / 7) - 10);
         scannerField.transform.eulerAngles = scannerFieldRotation - new Vector3((-cameraHeightMax / 4) - (cameraHeightMin / 2), 0, 0);
     }
     public void cameraMaxHeightSlider(Slider newHeightMax)
     {
+        coverage = true;
         cameraHeightMax = (int)newHeightMax.value;
         cameraHeight = cameraHeightMax - cameraHeightMin;
+        if (cameraHeight == 0 || cameraWidth == 0)
+            coverage = false;
         scannerField.transform.localScale = scannerFieldScale + new Vector3(cameraWidth - 10, 0, (cameraHeight / 7) - 10);
         scannerField.transform.eulerAngles = scannerFieldRotation - new Vector3((-cameraHeightMax / 4) - (cameraHeightMin / 2), 0, 0);
     }

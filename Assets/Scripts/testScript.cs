@@ -17,7 +17,7 @@ public class testScript : MonoBehaviour
 
     public void test()
     {
-        Debug.Log("test");
+        //Debug.Log("test");
         Camera cam = GetComponent<Camera>();
         cam.RenderToCubemap(cubemapEye, 63, Camera.MonoOrStereoscopicEye.Mono);
         cubemapEye.ConvertToEquirect(equirect, Camera.MonoOrStereoscopicEye.Mono);

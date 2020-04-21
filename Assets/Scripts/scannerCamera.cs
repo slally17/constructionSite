@@ -10,6 +10,7 @@ public class scannerCamera : MonoBehaviour
     //[SerializeField] private RenderTexture equirect;
 
     [SerializeField] private Canvas display;
+    [SerializeField] private GameObject saveDisplay;
     Camera snapCam;
 
     int startingResWidth = 6;
@@ -86,6 +87,7 @@ public class scannerCamera : MonoBehaviour
 
         if(snapCam.gameObject.activeInHierarchy)
         {
+            //Debug.Log("test");
             //Test
             //Camera cam = GetComponent<Camera>();
             //cam.RenderToCubemap(cubemapEye, 63, Camera.MonoOrStereoscopicEye.Mono);
@@ -109,7 +111,8 @@ public class scannerCamera : MonoBehaviour
             //byte[] bytes2 = System.IO.File.ReadAllBytes(fileName);
             Texture2D output = new Texture2D(resWidth, resHeight);
             output.LoadImage(bytes);
-            display.GetComponentInChildren<RawImage>().texture = output;
+            display.transform.GetChild(0).GetComponent<RawImage>().texture = output;
+            saveDisplay.GetComponent<saveScan>().saveTexture180(output);
 
             bytes = null;
             snapshot = null;

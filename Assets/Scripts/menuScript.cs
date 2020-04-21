@@ -17,6 +17,8 @@ public class menuScript : MonoBehaviour
     [SerializeField] private GameObject sensorMenu;
     [SerializeField] private GameObject resourceMenu;
     [SerializeField] private GameObject tripodMenu;
+    [SerializeField] private GameObject imuMenu;
+    [SerializeField] private GameObject rfidMenu;
     [SerializeField] private Canvas droneCanvas;
     [SerializeField] private GameObject menuBackButton;
     [SerializeField] private GameObject menuBackButton2;
@@ -33,7 +35,7 @@ public class menuScript : MonoBehaviour
     Vector3 droneResetPosition;
 
     void Start()
-    {      
+    {
         menuBackButton2.SetActive(false);
         droneResetPosition = drone.transform.position;
     }
@@ -58,6 +60,16 @@ public class menuScript : MonoBehaviour
     {
         sensorSelected();
         scannerMenu.SetActive(true);
+    }
+    public void imuSelected()
+    {
+        sensorSelected();
+        imuMenu.SetActive(true);
+    }
+    public void rfidSelected()
+    {
+        sensorSelected();
+        rfidMenu.SetActive(true);
     }
     public void droneSelected()
     {
@@ -127,5 +139,8 @@ public class menuScript : MonoBehaviour
         scanner.GetComponent<Animator>().SetBool("spin", false);
         scannerMenu.SetActive(false);
         resourceMenu.SetActive(false);
+        imuMenu.SetActive(false);
+        rfidMenu.SetActive(false);
     }
+
 }
