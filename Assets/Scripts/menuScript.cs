@@ -136,6 +136,8 @@ public class menuScript : MonoBehaviour
         resetDrone();
         resetScanner();
         resourceMenu.GetComponent<gpsScript>().back();
+        rfidMenu.GetComponent<rfidScript>().back();
+        imuMenu.GetComponent<imuScript>().backSelected();
         scanner.GetComponent<Animator>().SetBool("spin", false);
         scannerMenu.SetActive(false);
         resourceMenu.SetActive(false);

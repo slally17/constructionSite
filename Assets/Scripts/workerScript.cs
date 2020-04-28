@@ -1,65 +1,119 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using System.IO;
 
 public class workerScript : MonoBehaviour
 {
-    [SerializeField] private GameObject lShoulder;
-    [SerializeField] private GameObject rShoulder;
+    [SerializeField] private GameObject shoulder;
+    [SerializeField] private GameObject thigh;
     [SerializeField] private GameObject back;
     [SerializeField] private GameObject neck;
+    [SerializeField] private GameObject shoulderText;
+    [SerializeField] private GameObject thighText;
+    [SerializeField] private GameObject backText;
+    [SerializeField] private GameObject neckText;
 
     [SerializeField] private GameObject currentMenu;
     [SerializeField] private GameObject resultsMenu;
 
-    private bool lShoulderBool;
-    private bool rShoulderBool;
-    private bool backBool;
-    private bool neckBool;
+    public bool active = false;
+    public string fileName;
 
-    public void lShoulderSelect()
+    private bool shoulderBool = false;
+    private bool thighBool = false;
+    private bool backBool = false;
+    private bool neckBool = false;
+    private float timer = 0;
+    private int timeCount = 0;
+    private string fileContent = "";
+
+    private void Update()
     {
-        if(lShoulderBool)
+        if(active)
         {
-            lShoulderBool = false;
-        }
-        else
-        {
-            lShoulderBool = true;
+            timer += Time.deltaTime;
+            if (timer >= 1)
+            {
+                timeCount++;
+                timer = 0;
+
+                fileContent += "\nTime: " + timeCount.ToString() + " seconds\n";
+
+                if (shoulderBool)
+                {
+                    shoulderText.GetComponent<TextMeshProUGUI>().text = shoulder.transform.eulerAngles.y.ToString("#.00");
+                    fileContent += "Shoulder: " + shoulder.transform.eulerAngles.x.ToString("#.00") +
+                        " " + shoulder.transform.eulerAngles.y.ToString("#.00") +
+                        " " + shoulder.transform.eulerAngles.z.ToString("#.00") + "\n";
+                }
+                else
+                    shoulderText.GetComponent<TextMeshProUGUI>().text = "";
+
+                if (thighBool)
+                {
+                    thighText.GetComponent<TextMeshProUGUI>().text = thigh.transform.eulerAngles.y.ToString("#.00");
+                    fileContent += "Thigh: " + thigh.transform.eulerAngles.x.ToString("#.00") +
+                        " " + thigh.transform.eulerAngles.y.ToString("#.00") +
+                        " " + thigh.transform.eulerAngles.z.ToString("#.00") + "\n";
+                }
+                else
+                    thighText.GetComponent<TextMeshProUGUI>().text = "";
+
+                if (backBool)
+                {
+                    backText.GetComponent<TextMeshProUGUI>().text = back.transform.eulerAngles.y.ToString("#.00");
+                    fileContent += "Back: " + back.transform.eulerAngles.x.ToString("#.00") +
+                        " " + back.transform.eulerAngles.y.ToString("#.00") +
+                        " " + back.transform.eulerAngles.z.ToString("#.00") + "\n";
+                }
+                else
+                    backText.GetComponent<TextMeshProUGUI>().text = "";
+
+                if (neckBool)
+                {
+                    neckText.GetComponent<TextMeshProUGUI>().text = neck.transform.eulerAngles.y.ToString("#.00");
+                    fileContent += "Neck: " + neck.transform.eulerAngles.x.ToString("#.00") +
+                        " " + neck.transform.eulerAngles.y.ToString("#.00") +
+                        " " + neck.transform.eulerAngles.z.ToString("#.00") + "\n";
+                }
+                else
+                    neckText.GetComponent<TextMeshProUGUI>().text = "";
+            }
         }
     }
-    public void rShoulderSelect()
+
+    public void shoulderSelect()
     {
-        if (rShoulderBool)
-        {
-            rShoulderBool = false;
-        }
-        else
-        {
-            rShoulderBool = true;
-        }
+        shoulderBool = !shoulderBool;
+    }
+    public void thighSelect()
+    {
+        thighBool = !thighBool;
     }
     public void backSelect()
     {
-        if (backBool)
-        {
-            backBool = false;
-        }
-        else
-        {
-            backBool = true;
-        }
+        backBool = !backBool;
     }
     public void neckSelect()
     {
-        if (neckBool)
+        neckBool = !neckBool;
+    }
+    public void reset()
+    {
+        if(fileContent.Length > 1)
         {
-            neckBool = false;
+            File.AppendAllText(fileName, fileContent);
+            fileContent = "";
         }
-        else
-        {
-            neckBool = true;
-        }
+        shoulderBool = false;
+        thighBool = false;
+        backBool = false;
+        neckBool = false;
+        active = false;
+        timer = 0;
+        timeCount = 0;
     }
     public void select()
     {
