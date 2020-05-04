@@ -9,17 +9,13 @@ public class machine2Move : MonoBehaviour
     [SerializeField] private float precision;
     [SerializeField] private Transform[] moveSpots;
     [SerializeField] private Animator machineAnimator;
+    [SerializeField] private GameObject gpsScript;
 
     private bool enable = false;
     [HideInInspector] public bool tagged = false;
     [HideInInspector] public int lapCount;
     private int arrayPosition = 0;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    private string dumpTruckContent = "\nDump Truck Data\n\n";
 
     // Update is called once per frame
     void Update()
@@ -41,6 +37,8 @@ public class machine2Move : MonoBehaviour
                     arrayPosition = 0;
                     lapCount++;
                 }
+                dumpTruckContent += "Position " + arrayPosition + ":  x:" + transform.position.x + "  y:" +
+                    transform.position.y + "  z:" + transform.position.z + "\n";
             }
         }
     }
@@ -49,14 +47,16 @@ public class machine2Move : MonoBehaviour
     {
         if (enable)
         {
+            gpsScript.GetComponent<gpsScript>().dumpTruckData = dumpTruckContent;
             machineAnimator.SetBool("moving", false);
             enable = false;
         }
         else
-        {
+        {            
             lapCount = 0;
             machineAnimator.SetBool("moving", true);
             enable = true;
+            dumpTruckContent = "\nDump Truck Data\n\n";
         }
     }
 }

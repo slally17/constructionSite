@@ -53,7 +53,7 @@ public class rfidScript : MonoBehaviour
             woodFlag.SetActive(false);
         }
         else
-        {
+        {            
             wood = true;
             woodFlag.SetActive(true);
         }

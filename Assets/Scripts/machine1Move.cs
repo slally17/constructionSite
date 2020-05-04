@@ -8,18 +8,13 @@ public class machine1Move : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float precision;
     [SerializeField] private Transform[] moveSpots;
+    [SerializeField] private GameObject gpsScript;
 
     private bool enable = false;
     [HideInInspector] public bool tagged = false;
     [HideInInspector] public int lapCount;
     private int arrayPosition = 0;
-    
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    private string bulldozerContent = "\nBulldozer Data\n\n";
 
     // Update is called once per frame
     void Update()
@@ -41,6 +36,8 @@ public class machine1Move : MonoBehaviour
                     arrayPosition = 0;
                     lapCount++;
                 }
+                bulldozerContent += "Position " + arrayPosition + ":  x:" + transform.position.x + "  y:" +
+                    transform.position.y + "  z:" + transform.position.z + "\n";
             }
         }
     }
@@ -49,12 +46,14 @@ public class machine1Move : MonoBehaviour
     {
         if (enable)
         {
+            gpsScript.GetComponent<gpsScript>().bulldozerData = bulldozerContent;
             enable = false;
         }
         else
-        {
+        {            
             lapCount = 0;
             enable = true;
+            bulldozerContent = "\nBulldozer Data\n\n";
         }
     }
 }

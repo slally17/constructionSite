@@ -21,9 +21,13 @@ public class gpsScript : MonoBehaviour
     [SerializeField] private GameObject dumpTruckText;
     [SerializeField] private GameObject craneText;
 
-    GameObject[] tags;
-    bool moving = false;
-    float timer = 0;
+    private GameObject[] tags;
+    private bool moving = false;
+    private float timer = 0;
+
+    public string craneData;
+    public string bulldozerData;
+    public string dumpTruckData;
 
     private void Start()
     {
@@ -200,8 +204,20 @@ public class gpsScript : MonoBehaviour
         {
             craneText.GetComponent<TextMeshProUGUI>().text = " ";
         }
-
         File.AppendAllText(fileName, fileContent);
+        
+        if (bulldozer.GetComponent<machine1Move>().tagged)
+        {
+            File.AppendAllText(fileName, bulldozerData);
+        }
+        if (dumpTruck.GetComponent<machine2Move>().tagged)
+        {
+            File.AppendAllText(fileName, dumpTruckData);
+        }
+        if (crane.GetComponent<craneMove>().tagged)
+        {
+            File.AppendAllText(fileName, craneData);
+        }
     }
 
 

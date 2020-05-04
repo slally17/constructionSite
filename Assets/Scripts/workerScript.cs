@@ -25,58 +25,65 @@ public class workerScript : MonoBehaviour
     private bool thighBool = false;
     private bool backBool = false;
     private bool neckBool = false;
+    private bool recordData = false;
     private float timer = 0;
     private int timeCount = 0;
-    private string fileContent = "";
+    private string shoulderContent = "\nShoulder Data\n\n";
+    private string thighContent = "\nThigh Data\n\n";
+    private string backContent = "\nBack Data\n\n";
+    private string neckContent = "\nNeck Data\n\n";
+
 
     private void Update()
     {
-        if(active)
+        if(recordData)
         {
             timer += Time.deltaTime;
             if (timer >= 1)
             {
                 timeCount++;
-                timer = 0;
-
-                fileContent += "\nTime: " + timeCount.ToString() + " seconds\n";
+                timer = 0;                
 
                 if (shoulderBool)
                 {
-                    shoulderText.GetComponent<TextMeshProUGUI>().text = shoulder.transform.eulerAngles.y.ToString("#.00");
-                    fileContent += "Shoulder: " + shoulder.transform.eulerAngles.x.ToString("#.00") +
-                        " " + shoulder.transform.eulerAngles.y.ToString("#.00") +
-                        " " + shoulder.transform.eulerAngles.z.ToString("#.00") + "\n";
+                    shoulderContent += "Time: " + timeCount.ToString() + " seconds ";
+                    shoulderText.GetComponent<TextMeshProUGUI>().text = (shoulder.transform.eulerAngles.y % 140).ToString("#.00");
+                    shoulderContent += "  x:" + shoulder.transform.eulerAngles.x.ToString("#.00") +
+                        "  y:" + (shoulder.transform.eulerAngles.y % 140).ToString("#.00") +
+                        "  z:" + shoulder.transform.eulerAngles.z.ToString("#.00") + "\n";
                 }
                 else
                     shoulderText.GetComponent<TextMeshProUGUI>().text = "";
 
                 if (thighBool)
                 {
-                    thighText.GetComponent<TextMeshProUGUI>().text = thigh.transform.eulerAngles.y.ToString("#.00");
-                    fileContent += "Thigh: " + thigh.transform.eulerAngles.x.ToString("#.00") +
-                        " " + thigh.transform.eulerAngles.y.ToString("#.00") +
-                        " " + thigh.transform.eulerAngles.z.ToString("#.00") + "\n";
+                    thighContent += "Time: " + timeCount.ToString() + " seconds ";
+                    thighText.GetComponent<TextMeshProUGUI>().text = (thigh.transform.eulerAngles.y % 60).ToString("#.00");
+                    thighContent += "Thigh:  x:" + thigh.transform.eulerAngles.x.ToString("#.00") +
+                        "  y:" + (thigh.transform.eulerAngles.y % 60).ToString("#.00") +
+                        "  z:" + thigh.transform.eulerAngles.z.ToString("#.00") + "\n";
                 }
                 else
                     thighText.GetComponent<TextMeshProUGUI>().text = "";
 
                 if (backBool)
                 {
-                    backText.GetComponent<TextMeshProUGUI>().text = back.transform.eulerAngles.y.ToString("#.00");
-                    fileContent += "Back: " + back.transform.eulerAngles.x.ToString("#.00") +
-                        " " + back.transform.eulerAngles.y.ToString("#.00") +
-                        " " + back.transform.eulerAngles.z.ToString("#.00") + "\n";
+                    backContent += "Time: " + timeCount.ToString() + " seconds ";
+                    backText.GetComponent<TextMeshProUGUI>().text = (back.transform.eulerAngles.y % 120).ToString("#.00");
+                    backContent += "Back:  x:" + back.transform.eulerAngles.x.ToString("#.00") +
+                        "  y:" + (back.transform.eulerAngles.y % 120).ToString("#.00") +
+                        "  z:" + back.transform.eulerAngles.z.ToString("#.00") + "\n";
                 }
                 else
                     backText.GetComponent<TextMeshProUGUI>().text = "";
 
                 if (neckBool)
                 {
-                    neckText.GetComponent<TextMeshProUGUI>().text = neck.transform.eulerAngles.y.ToString("#.00");
-                    fileContent += "Neck: " + neck.transform.eulerAngles.x.ToString("#.00") +
-                        " " + neck.transform.eulerAngles.y.ToString("#.00") +
-                        " " + neck.transform.eulerAngles.z.ToString("#.00") + "\n";
+                    neckContent += "Time: " + timeCount.ToString() + " seconds ";
+                    neckText.GetComponent<TextMeshProUGUI>().text = (neck.transform.eulerAngles.y % 40).ToString("#.00");
+                    neckContent += "Neck:  x:" + neck.transform.eulerAngles.x.ToString("#.00") +
+                        "  y:" + (neck.transform.eulerAngles.y % 40).ToString("#.00") +
+                        "  z:" + neck.transform.eulerAngles.z.ToString("#.00") + "\n";
                 }
                 else
                     neckText.GetComponent<TextMeshProUGUI>().text = "";
@@ -102,16 +109,32 @@ public class workerScript : MonoBehaviour
     }
     public void reset()
     {
-        if(fileContent.Length > 1)
+        if (shoulderBool)
         {
-            File.AppendAllText(fileName, fileContent);
-            fileContent = "";
+            File.AppendAllText(fileName, shoulderContent);
+            shoulderContent = "\nShoulder Data\n\n";
+        }
+        if (thighBool)
+        {
+            File.AppendAllText(fileName, thighContent);
+            thighContent = "\nThigh Data\n\n";
+        }
+        if (backBool)
+        {
+            File.AppendAllText(fileName, backContent);
+            backContent = "\nBack Data\n\n";
+        }
+        if (neckBool)
+        {
+            File.AppendAllText(fileName, neckContent);
+            neckContent = "\nNeck Data\n\n";
         }
         shoulderBool = false;
         thighBool = false;
         backBool = false;
         neckBool = false;
         active = false;
+        recordData = false;
         timer = 0;
         timeCount = 0;
     }
@@ -119,5 +142,6 @@ public class workerScript : MonoBehaviour
     {
         currentMenu.SetActive(false);
         resultsMenu.SetActive(true);
+        recordData = true;
     }
 }

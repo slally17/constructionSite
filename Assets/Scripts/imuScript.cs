@@ -24,7 +24,7 @@ public class imuScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string filePath = Application.persistentDataPath + "/imuReports";
+        filePath = Application.persistentDataPath + "/imuReports";
         if (!Directory.Exists(filePath))
         {
             Directory.CreateDirectory(filePath);
@@ -32,8 +32,7 @@ public class imuScript : MonoBehaviour
 
         fileName = string.Format("{0}/imuReport_{1}.txt",
             filePath,
-            System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
-        File.WriteAllText(fileName, "IMU Report: ");        
+            System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));                
 
         mainPage.SetActive(true);
         laborerPage.SetActive(false);
@@ -47,6 +46,7 @@ public class imuScript : MonoBehaviour
 
     public void laborerSelect()
     {
+        File.WriteAllText(fileName, "IMU Report: ");
         File.AppendAllText(fileName, "Laborer\n");
         mainPage.SetActive(false);
         laborerPage.SetActive(true);
@@ -55,6 +55,7 @@ public class imuScript : MonoBehaviour
     }
     public void painterSelect()
     {
+        File.WriteAllText(fileName, "IMU Report: ");
         File.AppendAllText(fileName, "Painter\n");
         mainPage.SetActive(false);
         painterPage.SetActive(true);
@@ -63,6 +64,7 @@ public class imuScript : MonoBehaviour
     }
     public void carpenter1Select()
     {
+        File.WriteAllText(fileName, "IMU Report: ");
         File.AppendAllText(fileName, "Carpenter 1\n");
         mainPage.SetActive(false);
         carpenter1Page.SetActive(true);
@@ -71,6 +73,7 @@ public class imuScript : MonoBehaviour
     }
     public void carpenter2Select()
     {
+        File.WriteAllText(fileName, "IMU Report: ");
         File.AppendAllText(fileName, "Carpenter 2\n");
         mainPage.SetActive(false);
         carpenter2Page.SetActive(true);
@@ -90,6 +93,10 @@ public class imuScript : MonoBehaviour
         carpenter1Page.SetActive(false);
         carpenter2Page.SetActive(false);
         mainPage.SetActive(true);
+
+        fileName = string.Format("{0}/imuReport_{1}.txt",
+            filePath,
+            System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"));
 
         imuPage.SetActive(false);
     }

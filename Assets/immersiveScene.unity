@@ -4838,6 +4838,7 @@ MonoBehaviour:
   currentMenu: {fileID: 86858864}
   resultsMenu: {fileID: 1100351066}
   active: 0
+  fileName: 
 --- !u!1 &124353271
 GameObject:
   m_ObjectHideFlags: 0
@@ -17034,6 +17035,7 @@ MonoBehaviour:
   - {fileID: 847724645}
   - {fileID: 1934465163}
   machineAnimator: {fileID: 1271318245}
+  gpsScript: {fileID: 1429651060}
   tagged: 0
   lapCount: 0
 --- !u!1 &472840525
@@ -21272,8 +21274,8 @@ MonoBehaviour:
   rebarFlag: {fileID: 345857442}
   woodFlag: {fileID: 397722957}
   logReport: {fileID: 1637317742}
-  rebarReport: {fileID: 1488644360}
-  woodReport: {fileID: 1706889793}
+  rebarReport: {fileID: 1706889793}
+  woodReport: {fileID: 1488644360}
 --- !u!224 &643157841
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30143,7 +30145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &989924218
 RectTransform:
   m_ObjectHideFlags: 0
@@ -41614,6 +41616,9 @@ MonoBehaviour:
   bulldozerText: {fileID: 397175295}
   dumpTruckText: {fileID: 1928714360}
   craneText: {fileID: 2114180207}
+  craneData: 
+  bulldozerData: 
+  dumpTruckData: 
 --- !u!1 &1431701748
 GameObject:
   m_ObjectHideFlags: 0
@@ -46357,6 +46362,7 @@ MonoBehaviour:
   - {fileID: 767382104}
   - {fileID: 2011704284}
   - {fileID: 606426351}
+  gpsScript: {fileID: 1429651060}
   tagged: 0
   lapCount: 0
 --- !u!1 &1622319339
@@ -62890,6 +62896,7 @@ MonoBehaviour:
   currentMenu: {fileID: 1832306142}
   resultsMenu: {fileID: 1100351066}
   active: 0
+  fileName: 
 --- !u!1 &1618752537296732237
 GameObject:
   m_ObjectHideFlags: 0
@@ -64750,6 +64757,7 @@ MonoBehaviour:
   tagged: 0
   lapCount: 0
   craneTop: {fileID: 8006612256667131583}
+  gpsScript: {fileID: 1429651060}
 --- !u!4 &5127418453451411171
 Transform:
   m_ObjectHideFlags: 0
@@ -66025,6 +66033,7 @@ MonoBehaviour:
   currentMenu: {fileID: 2051533220}
   resultsMenu: {fileID: 1100351066}
   active: 0
+  fileName: 
 --- !u!1 &7406338128464119576
 GameObject:
   m_ObjectHideFlags: 0
@@ -70540,7 +70549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shoulder: {fileID: 8508087359504988641}
-  thigh: {fileID: 8508087359504988211}
+  thigh: {fileID: 8508087359504988623}
   back: {fileID: 8508087359504988219}
   neck: {fileID: 8508087359504988663}
   shoulderText: {fileID: 1857870691}
@@ -70550,6 +70559,7 @@ MonoBehaviour:
   currentMenu: {fileID: 1124723530}
   resultsMenu: {fileID: 1100351066}
   active: 0
+  fileName: 
 --- !u!1 &8508087359504988247
 GameObject:
   m_ObjectHideFlags: 0

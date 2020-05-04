@@ -14,7 +14,6 @@ public class menuScript : MonoBehaviour
     [SerializeField] private GameObject drone;
 
     [SerializeField] private GameObject scannerMenu;
-    [SerializeField] private GameObject sensorMenu;
     [SerializeField] private GameObject resourceMenu;
     [SerializeField] private GameObject tripodMenu;
     [SerializeField] private GameObject imuMenu;
