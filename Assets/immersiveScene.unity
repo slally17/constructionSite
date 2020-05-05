@@ -51426,14 +51426,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 063e6a2e0d1bf024c9630a9e4fffe61e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 500205123}
+  mainCamera: {fileID: 1974966125}
   worker: {fileID: 2118825296}
   tripod: {fileID: 1422815715}
   scanner: {fileID: 203158964}
   scannerCanvas: {fileID: 301951568}
   drone: {fileID: 2005519330}
   scannerMenu: {fileID: 1828762428}
-  sensorMenu: {fileID: 0}
   resourceMenu: {fileID: 1429651060}
   tripodMenu: {fileID: 1722363979}
   imuMenu: {fileID: 1597603166}
@@ -52087,7 +52086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bd56021c142004aa4b20ad4504db19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 500205123}
+  mainCamera: {fileID: 1974966125}
   mainMenu: {fileID: 1808582390}
   tripodMenu: {fileID: 1722363979}
   tripod: {fileID: 1422815715}

@@ -64464,7 +64464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bd56021c142004aa4b20ad4504db19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 233889374}
+  mainCamera: {fileID: 745938047}
   mainMenu: {fileID: 5600688896800198832}
   tripodMenu: {fileID: 649733919}
   tripod: {fileID: 898597871}
@@ -72316,7 +72316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 063e6a2e0d1bf024c9630a9e4fffe61e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 233889374}
+  mainCamera: {fileID: 745938047}
   worker: {fileID: 15419269}
   tripod: {fileID: 898597871}
   scanner: {fileID: 779965100}
