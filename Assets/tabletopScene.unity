@@ -5531,7 +5531,7 @@ MonoBehaviour:
   tagged: 0
   lapCount: 0
   craneTop: {fileID: 1287476392}
-  gpsScript: {fileID: 0}
+  gpsScript: {fileID: 64933612}
 --- !u!1 &51508704
 GameObject:
   m_ObjectHideFlags: 0
@@ -6213,7 +6213,7 @@ GameObject:
   - component: {fileID: 64933614}
   - component: {fileID: 64933613}
   m_Layer: 5
-  m_Name: resourceMenu
+  m_Name: gpsMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6262,8 +6262,8 @@ RectTransform:
   - {fileID: 1319508622}
   - {fileID: 1304470600}
   - {fileID: 335618072}
-  - {fileID: 1938895549}
   - {fileID: 1000205645}
+  - {fileID: 1938895549}
   m_Father: {fileID: 5600688896800198844}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -30065,7 +30065,7 @@ MonoBehaviour:
   - {fileID: 530161858}
   - {fileID: 1837359954}
   machineAnimator: {fileID: 275837108}
-  gpsScript: {fileID: 0}
+  gpsScript: {fileID: 64933612}
   tagged: 0
   lapCount: 0
 --- !u!114 &870509061
@@ -33790,7 +33790,7 @@ RectTransform:
   - {fileID: 2119341221}
   - {fileID: 1801158440}
   m_Father: {fileID: 64933614}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -38271,7 +38271,7 @@ MonoBehaviour:
   - {fileID: 2129199924}
   - {fileID: 1105517052}
   - {fileID: 1905149127}
-  gpsScript: {fileID: 0}
+  gpsScript: {fileID: 64933612}
   tagged: 0
   lapCount: 0
 --- !u!114 &1137528756
@@ -63154,7 +63154,7 @@ RectTransform:
   - {fileID: 1630005843}
   - {fileID: 93305804}
   m_Father: {fileID: 64933614}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
